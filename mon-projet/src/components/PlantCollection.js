@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PlantList from './PlantList';
 
 function PlantCollection() {
     const [plants, setPlants] = useState([]);
@@ -9,7 +10,7 @@ function PlantCollection() {
     const addPlant = (e) => {
     e.preventDefault();
     if (name && species && description) {
-        const newPlant = { id: Date.now(), name, species, description };
+            const newPlant = { id: Date.now(), name, species, description };
         setPlants([...plants, newPlant]);
         setName('');
         setSpecies('');
@@ -45,13 +46,7 @@ function PlantCollection() {
             Ajouter Plante
         </button>
         </form>
-        <ul className="list">
-        {plants.map((plant) => (
-            <li key={plant.id} className="list-item">
-            <strong>{plant.name}</strong> ({plant.species}) - {plant.description}
-            </li>
-        ))}
-        </ul>
+        <PlantList plants={plants} />
     </div>
     );
 }

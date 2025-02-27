@@ -1,12 +1,18 @@
 import React from 'react';
-import PlantCollection from './components/PlantCollection.js';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navigation from './Navigation';
+import PlantCollection from './PlantCollection';
 
 function App() {
   return (
-    <div className="App">
-      <PlantCollection />
-    </div>
+    <Router>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<PlantCollection />} />
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
+
