@@ -1,20 +1,25 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navigation from './components/Navbar';
-import PlantCollection from './components/PlantCollection';
-import PlantDetails from './components/Details';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Navigation from "./components/Navbar";
+import PlantCollection from "./components/PlantCollection";
+import PlantDetails from "./components/Details";
+import ThemeToggle from "./components/ThemeToggle";
 
 function App() {
-  const [plants, setPlants] = useState([]); // Stockage des plantes ici
+  const theme = useSelector((state) => state.theme); // Récupérer le thème depuis Redux
 
   return (
-    <Router>
-      <Navigation />
-      <Routes>
-        <Route path="/" element={<PlantCollection setPlants={setPlants} plants={plants} />} />
-        <Route path="/plant/:id" element={<PlantDetails />} />
-      </Routes>
-    </Router>
+    <div className={theme}>
+      <Router>
+        <Navigation />
+        <ThemeToggle /> {/* Bouton pour changer le thème */}
+        <Routes>
+          <Route path="/" element={<PlantCollection />} />
+          <Route path="/plant/:id" element={<PlantDetails />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
