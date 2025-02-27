@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navigation from './Navigation';
-import PlantCollection from './PlantCollection';
+import Navigation from './components/Navbar';
+import PlantCollection from './components/PlantCollection';
 
 function App() {
   return (
